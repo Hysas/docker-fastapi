@@ -1,10 +1,36 @@
 services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=fastapi
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/create_tables.sql
   app:
     build: .
     container_name: python-server
     command: uvicorn src.main:app --host 0.0.0.0 --port 80 --reload
+    depends_on:
+      - db
     ports:
-      - 80:80
+      - 80:80      
       - 5678:5678
+    environment:
+      NODE_ENV: development
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: fastapi
+    links:
+      - db
     volumes:
       - .:/code
+volumes:
+  db:
+    driver: local

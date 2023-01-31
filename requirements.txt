@@ -1,4 +1,7 @@
-fastapi
-uvicorn
-redis
+fastapi[all]
+uvicorn[standard]
 debugpy
+psycopg2
+psycopg[binary]
+SQLAlchemy
+passlib[bcrypt]

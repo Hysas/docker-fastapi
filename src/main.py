@@ -1,11 +1,21 @@
-from fastapi import FastAPI
-import debugpy
+from fastapi import FastAPI, Response, status, HTTPException, Depends
+from sqlalchemy.orm import Session
+
+from . import models, schemas, utils
+from .database import engine, get_db
+from .routers import post, user
+
+
+models.Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI()
 
-debugpy.listen(("0.0.0.0",5678))
+
+import debugpy
+debugpy.listen(("0.0.0.0", 5678))
 
 
 @app.get("/")
-def read_root():
-    return {"Hello": "Worldasda2"}
+def root():    
+    return {"message": "Hello World"}
