@@ -3,6 +3,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
 
+from . import config
+
 NODE_ENV = os.environ["NODE_ENV"]
 DB_HOST = os.environ["DB_HOST"]
 DB_PORT = str(os.environ["DB_PORT"])

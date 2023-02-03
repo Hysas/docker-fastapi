@@ -2,6 +2,6 @@ fastapi[all]
 uvicorn[standard]
 debugpy
 psycopg2
-psycopg[binary]
 SQLAlchemy
 passlib[bcrypt]
+python-jose[cryptography]
