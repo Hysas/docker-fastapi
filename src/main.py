@@ -18,9 +18,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-import debugpy
-debugpy.listen(("0.0.0.0", 5678))
-
 app.include_router(post.router)
 app.include_router(user.router)
 app.include_router(auth.router) 
