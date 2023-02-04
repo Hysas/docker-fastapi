@@ -1,0 +1,23 @@
+{
+	"DB_PASSWORD": "postgres",
+	"HOSTNAME": "c1d6a2b07339",
+	"PYTHON_VERSION": "3.10.9",
+	"REMOTE_CONTAINERS_IPC": "/tmp/vscode-remote-containers-ipc-faa25a72c1870516e18442cf2bc57540a8d1d415.sock",
+	"PYTHON_SETUPTOOLS_VERSION": "65.5.1",
+	"NODE_ENV": "development",
+	"DB_PORT": "5432",
+	"DB_USER": "postgres",
+	"HOME": "/root",
+	"LANG": "C.UTF-8",
+	"SECRET_KEY": "c0f1cd4babc2eecd335c47a0c137f9fa61986710aa4ad70e8dab6f4945af2ac2",
+	"GPG_KEY": "A035C8C19219BA821ECEA86B64E628F8D684696D",
+	"DB_HOST": "db",
+	"REMOTE_CONTAINERS_SOCKETS": "[\"/tmp/vscode-ssh-auth-faa25a72c1870516e18442cf2bc57540a8d1d415.sock\"]",
+	"SHLVL": "1",
+	"PYTHON_PIP_VERSION": "22.3.1",
+	"DB_NAME": "fastapi",
+	"PYTHON_GET_PIP_SHA256": "1e501cf004eac1b7eb1f97266d28f995ae835d30250bec7f8850562703067dc6",
+	"PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/66030fa03382b4914d4c4d0896961a0bdeeeb274/public/get-pip.py",
+	"PATH": "/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+	"_": "/bin/cat"
+}
