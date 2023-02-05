@@ -6,3 +6,4 @@ SQLAlchemy
 passlib[bcrypt]
 python-jose[cryptography]
 alembic
+pytest

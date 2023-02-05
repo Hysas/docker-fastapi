@@ -13,7 +13,7 @@ router = APIRouter(
 )
 
 @router.get("/", response_model=list[schemas.PostOut])
-def get_posts(db: Session = Depends(get_db), limit: int = 10, skip: int = 0, search: Optional[str] = ""):
+def get_posts(db: Session = Depends(get_db), limit: int = 10, skip: int = 0, search: Optional[str] = "", current_user: schemas.User = Depends(oauth2.get_current_user)):
     posts = db.query(models.Post, func.count(models.Vote.post_id).label('Votes'))\
                 .join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True)\
                 .group_by(models.Post.id)\
@@ -34,7 +34,7 @@ def create_posts(post: schemas.PostCreate, db: Session = Depends(get_db), curren
 
 
 @router.get("/{id}", response_model=schemas.PostOut)
-def get_post(id: int, db: Session = Depends(get_db)):
+def get_post(id: int, db: Session = Depends(get_db), current_user: schemas.User = Depends(oauth2.get_current_user)):
     post = db.query(models.Post, func.count(models.Vote.post_id).label('Votes'))\
             .join(models.Vote, models.Vote.post_id == models.Post.id, isouter=True)\
             .group_by(models.Post.id)\
