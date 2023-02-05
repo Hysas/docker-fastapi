@@ -2,6 +2,13 @@ name: Build and Deploy code
 on: [push, pull_request]
 jobs:
   job1:
+    env:
+      DB_HOST: localhost
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: fastapi
+      SECRET_KEY: c0f1cd4babc2eecd335c47a0c137f9fa61986710aa4ad70e8dab6f4945af2ac2
     runs-on: ubuntu-latest
     steps:
       - name: Pulling git repo
