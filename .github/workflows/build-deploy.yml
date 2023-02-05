@@ -37,13 +37,13 @@ jobs:
         run: python -m pip install --upgrade pip
       - name: Install all dependencies
         run: pip install -r requirements.txt
-      # - name: Connect to PostgreSQL
-      #   run: node client.js
-      #   env:
-      #     # The hostname used to communicate with the PostgreSQL service container
-      #     POSTGRES_HOST: localhost
-      #     # The default PostgreSQL port
-      #     POSTGRES_PORT: 5432
+      - name: Connect to PostgreSQL
+        run: node client.js
+        env:
+          # The hostname used to communicate with the PostgreSQL service container
+          POSTGRES_HOST: localhost
+          # The default PostgreSQL port
+          POSTGRES_PORT: 5432
       - name: Test with pytest
         run: |
           pip install pytest
