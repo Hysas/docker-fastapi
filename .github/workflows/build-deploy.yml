@@ -4,12 +4,12 @@ jobs:
   job1:
     env:
       NODE_ENV: development
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: fastapi
-      SECRET_KEY: c0f1cd4babc2eecd335c47a0c137f9fa61986710aa4ad70e8dab6f4945af2ac2
+      DB_HOST: ${{secrets.DB_HOST}}
+      DB_PORT: ${{secrets.DB_PORT}}
+      DB_USER: ${{secrets.DB_USER}}
+      DB_PASSWORD: ${{secrets.DB_PASSWORD}}
+      DB_NAME: ${{secrets.DB_NAME}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
     runs-on: ubuntu-latest
     steps:
       - name: Pulling git repo
