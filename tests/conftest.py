@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base   
 
 NODE_ENV = config.settings.NODE_ENV
-DB_HOST = "db"
+DB_HOST = "localhost"
 DB_PORT = 5432
 DB_USER = "postgres"
 DB_PASSWORD = "postgres"
