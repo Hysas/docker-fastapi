@@ -2,34 +2,34 @@ name: Build and Deploy code
 on: [push, pull_request]
 jobs:
   job1:
-    env:
-      NODE_ENV: development
-      DB_HOST: localhost
-      DB_PORT: 5432
-      DB_USER: postgres
-      DB_PASSWORD: postgres
-      DB_NAME: fastapi
-      SECRET_KEY: c0f1cd4babc2eecd335c47a0c137f9fa61986710aa4ad70e8dab6f4945af2ac2
+    # env:
+    #   NODE_ENV: development
+    #   DB_HOST: localhost
+    #   DB_PORT: 5432
+    #   DB_USER: postgres
+    #   DB_PASSWORD: postgres
+    #   DB_NAME: fastapi
+    #   SECRET_KEY: c0f1cd4babc2eecd335c47a0c137f9fa61986710aa4ad70e8dab6f4945af2ac2
 
-    # Service containers to run with `runner-job`
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres
-        # Provide the password for postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: fastapi_test
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
+    # # Service containers to run with `runner-job`
+    # services:
+    #   # Label used to access the service container
+    #   postgres:
+    #     # Docker Hub image
+    #     image: postgres
+    #     # Provide the password for postgres
+    #     env:
+    #       POSTGRES_PASSWORD: postgres
+    #       POSTGRES_DB: fastapi_test
+    #     # Set health checks to wait until postgres has started
+    #     options: >-
+    #       --health-cmd pg_isready
+    #       --health-interval 10s
+    #       --health-timeout 5s
+    #       --health-retries 5
+    #     ports:
+    #       # Maps tcp port 5432 on service container to the host
+    #       - 5432:5432
 
     runs-on: ubuntu-latest
     steps:
@@ -38,7 +38,7 @@ jobs:
       - name: Docker Compose Action
         uses: isbang/compose-action@v1.4.1
         with:
-          compose-file: "./docker/docker-compose-dev.yml"
+          compose-file: "./docker-compose-dev.yml"
 
       # - name: Install Python v3.10
       #   uses: actions/setup-python@v4
