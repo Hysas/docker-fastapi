@@ -35,11 +35,21 @@ jobs:
     steps:
       - name: Pulling git repo
         uses: actions/checkout@v3      
-      - name: run docker-compose
+      - name: docker-compose up --build
         uses: sudo-bot/action-docker-compose@latest
         with:
             # https://docs.docker.com/compose/reference/overview/
             cli-args: "up --build"
+      - name: docker-compose exec app pytest
+        uses: sudo-bot/action-docker-compose@latest
+        with:
+            # https://docs.docker.com/compose/reference/overview/
+            cli-args: "exec app pytest"
+      - name: docker-compose down
+        uses: sudo-bot/action-docker-compose@latest
+        with:
+            # https://docs.docker.com/compose/reference/overview/
+            cli-args: "down"
       # - name: docker-compose up
       #   run: docker-compose up -d
       #   env:
