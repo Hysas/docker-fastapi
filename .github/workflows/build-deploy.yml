@@ -37,11 +37,15 @@ jobs:
         uses: actions/checkout@v3
       - name: docker-compose up
         run: docker-compose up -d
+        env:
+          COMPOSE_INTERACTIVE_NO_CLI: 1
       - name: Check running containers
         run: docker-compose ps -a
       - name: Check logs
         run: docker-compose logs app
       - name: Test with pytest
+        env:
+          COMPOSE_INTERACTIVE_NO_CLI: 1
         run: docker-compose exec app pytest
 
 
