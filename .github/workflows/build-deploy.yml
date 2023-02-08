@@ -35,47 +35,10 @@ jobs:
     steps:
       - name: Pulling git repo
         uses: actions/checkout@v3      
-      - name: docker-compose up --build
-        uses: sudo-bot/action-docker-compose@latest
-        with:
-            # https://docs.docker.com/compose/reference/overview/
-            cli-args: "up --build"
-      - name: docker-compose exec app pytest
-        uses: sudo-bot/action-docker-compose@latest
-        with:
-            # https://docs.docker.com/compose/reference/overview/
-            cli-args: "exec app pytest"
-      - name: docker-compose down
-        uses: sudo-bot/action-docker-compose@latest
-        with:
-            # https://docs.docker.com/compose/reference/overview/
-            cli-args: "down"
-      # - name: docker-compose up
-      #   run: docker-compose up -d
-      #   env:
-      #     COMPOSE_INTERACTIVE_NO_CLI: 1
-      # - name: Check running containers
-      #   run: docker-compose ps -a
-      # - name: Check logs
-      #   run: docker-compose logs app
-      # - name: Test with pytest
-      #   env:
-      #     COMPOSE_INTERACTIVE_NO_CLI: 1
-      #   run: docker-compose exec app pytest
-
-
-      # - name: Install Python v3.10
-      #   uses: actions/setup-python@v4
-      #   with:
-      #     python-version: '3.10' 
-      # - name: Update pip
-      #   run: python -m pip install --upgrade pip
-      # - name: Install all dependencies
-      #   run: pip install -r requirements.txt
-      # - name: Test with pytest
-      #   run: |
-      #     pip install pytest
-      #     pytest
+      - name: UnitTest with pytest
+        run: |
+          docker-compose up -d
+          docker-compose exec -T app pytest          
       # -
       #   name: Checkout
       #   uses: actions/checkout@v3
