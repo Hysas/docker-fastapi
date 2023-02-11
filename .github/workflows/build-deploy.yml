@@ -36,9 +36,11 @@ jobs:
       - name: Pulling git repo
         uses: actions/checkout@v3      
       - name: UnitTest with pytest
-        run: |
-          docker-compose up --build -d
-          docker-compose exec -T app pytest          
+        run: pytest
+      # - name: UnitTest with pytest
+      #   run: |
+      #     docker-compose up --build -d
+      #     docker-compose exec -T app pytest          
       # -
       #   name: Checkout
       #   uses: actions/checkout@v3
