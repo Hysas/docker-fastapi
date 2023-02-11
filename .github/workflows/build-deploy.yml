@@ -48,6 +48,10 @@ jobs:
           run: |
             docker-compose run app pytest
 
+        - name: Show Logs
+          run: |
+            docker-compose logs
+
         - name: Stop services
           run: |
             docker-compose down
