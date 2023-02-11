@@ -41,13 +41,12 @@ jobs:
             docker-compose up -d
             docker-compose ps
 
-        - name: Run tests
-          run: |
-            docker-compose exec -T app pytest
         # - name: Run tests
         #   run: |
-        #     docker-compose run app pytest
-        #     docker-compose logs        
+        #     docker-compose exec -T app pytest
+        - name: Run tests
+          run: |
+            docker-compose run --rm -e GITHUB_ACTIONS=true app -- pytest            
 
         - name: Stop services
           run: |
