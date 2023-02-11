@@ -33,23 +33,22 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout
-          uses: actions/checkout@v3
+        # - name: Checkout
+        #   uses: actions/checkout@v3
   
-        - name: Tests
-          uses: cloudposse/github-action-docker-compose-test-run@main
-          with:
-            file: docker-compose.yml
-            service: app
-            command: tests/unit-tests.sh
-      # - name: Pulling git repo
-      #   uses: actions/checkout@v3      
-      # - name: UnitTest with pytest
-      #   run: pytest
-      # - name: UnitTest with pytest
-      #   run: |
-      #     docker-compose up --build -d
-      #     docker-compose exec -T app pytest          
+        # - name: Tests
+        #   uses: cloudposse/github-action-docker-compose-test-run@main
+        #   with:
+        #     file: docker-compose.yml
+        #     service: app
+        #     command: tests/unit-tests.sh
+      - name: Pulling git repo
+        uses: actions/checkout@v3            
+      - name: UnitTest with pytest
+        run: |
+          docker-compose up -d
+          docker-compose exec -T pip install pytest
+          docker-compose exec -T pytest
       # -
       #   name: Checkout
       #   uses: actions/checkout@v3
