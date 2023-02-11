@@ -2,6 +2,8 @@ name: Build and Deploy code
 on: [push, pull_request]
 jobs:
   job1:
+    env:
+      GITHUB_ACTIONS: true
     # env:
     #   NODE_ENV: development
     #   DB_HOST: localhost
@@ -46,7 +48,7 @@ jobs:
         #     docker-compose exec -T app pytest
         - name: Run tests
           run: |
-            docker-compose run --rm -e GITHUB_ACTIONS=true app -- pytest            
+            docker-compose run --rm -e app pytest            
 
         - name: Stop services
           run: |
