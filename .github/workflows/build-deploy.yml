@@ -33,10 +33,19 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - name: Pulling git repo
-        uses: actions/checkout@v3      
-      - name: UnitTest with pytest
-        run: pytest
+        - name: Checkout
+          uses: actions/checkout@v3
+  
+        - name: Tests
+          uses: cloudposse/github-action-docker-compose-test-run@main
+          with:
+            file: docker-compose.yml
+            service: app
+            command: pytest
+      # - name: Pulling git repo
+      #   uses: actions/checkout@v3      
+      # - name: UnitTest with pytest
+      #   run: pytest
       # - name: UnitTest with pytest
       #   run: |
       #     docker-compose up --build -d
