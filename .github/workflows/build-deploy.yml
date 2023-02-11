@@ -33,22 +33,26 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-        # - name: Checkout
-        #   uses: actions/checkout@v3
-  
-        # - name: Tests
-        #   uses: cloudposse/github-action-docker-compose-test-run@main
-        #   with:
-        #     file: docker-compose.yml
-        #     service: app
-        #     command: tests/unit-tests.sh
-      - name: Pulling git repo
-        uses: actions/checkout@v3            
-      - name: UnitTest with pytest
-        run: |
-          docker-compose up -d
-          docker-compose exec -T pip install pytest
-          docker-compose exec -T pytest
+        - name: Checkout code
+          uses: actions/checkout@v2
+
+        - name: Set up Docker Compose
+          uses: docker/setup-docker-compose@v1
+          with:
+            version: 1.26.2
+
+        - name: Start services
+          run: |
+            docker-compose up -d
+            docker-compose ps
+
+        - name: Run tests
+          run: |
+            docker-compose exec app pytest
+
+        - name: Stop services
+          run: |
+            docker-compose down
       # -
       #   name: Checkout
       #   uses: actions/checkout@v3
