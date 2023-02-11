@@ -34,12 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: Checkout code
-          uses: actions/checkout@v2
-
-        - name: Set up Docker Compose
-          uses: docker/setup-docker-compose@v1
-          with:
-            version: 1.26.2
+          uses: actions/checkout@v3
 
         - name: Start services
           run: |
