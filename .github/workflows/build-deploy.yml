@@ -43,7 +43,7 @@ jobs:
 
         - name: Run tests
           run: |
-            docker-compose exec app pytest
+            docker-compose exec -T app pytest
 
         - name: Stop services
           run: |
