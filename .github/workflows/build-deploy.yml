@@ -40,18 +40,7 @@ jobs:
 
         - name: Start services
           run: |
-            docker-compose up -d
-            docker-compose ps
-
-        # - name: Run tests
-        #   run: |
-        #     docker-compose exec -T app pytest
-        # - name: Run tests
-        #   run: |
-        #     docker-compose run --rm -e app pytest     
-        - name: Run tests
-          run: |
-            docker-compose run app pytest     
+            docker-compose up  
 
         - name: Stop services
           run: |
