@@ -7,4 +7,3 @@ passlib[bcrypt]
 python-jose[cryptography]
 alembic
 pytest
-pytest-github-actions-annotate-failures
