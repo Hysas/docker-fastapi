@@ -36,3 +36,10 @@ jobs:
             file: ./Dockerfile
             push: true
             tags: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-docker
+        - name: Sync
+          uses: ms-jpq/sync-dockerhub-readme@v1
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_TOKEN }}
+            repository: ${{ secrets.DOCKERHUB_USERNAME }}/fastapi-docker
+            readme: "./README.md"
