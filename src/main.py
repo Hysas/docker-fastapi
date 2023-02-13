@@ -10,13 +10,13 @@ origins = [
     "*",
 ]
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
 app.include_router(post.router)
 app.include_router(user.router)
@@ -26,3 +26,7 @@ app.include_router(vote.router)
 @app.get("/")
 def root():
     return {"message": "Hello World!!!2345"}
+
+@app.get("/80")
+def root():
+    return {"message": "Test"}

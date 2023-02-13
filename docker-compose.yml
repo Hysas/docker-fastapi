@@ -1,5 +1,19 @@
 version: "3"
 services:
+  # traefik:
+  #   image: "traefik:latest"
+  #   container_name: "traefik"
+  #   command:
+  #     #- "--log.level=DEBUG"
+  #     - "--api.insecure=true"
+  #     - "--providers.docker=true"
+  #     - "--providers.docker.exposedbydefault=false"
+  #     - "--entrypoints.web.address=:80"
+  #   ports:
+  #     - "80:80"
+  #     - "8080:8080"
+  #   volumes:
+  #     - "/var/run/docker.sock:/var/run/docker.sock:ro"
   db:
     image: postgres:latest
     restart: always
@@ -7,10 +21,10 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=fastapi
-    ports:
-      - 5432:5432
     volumes:
       - db:/var/lib/postgresql/data
+    # networks:      
+    #   - traefik-public
   dbtest:
     image: postgres:latest
     restart: always
@@ -18,18 +32,23 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=fastapi_test
-    ports:
-      - 5433:5432
+    # networks:      
+    #   - traefik-public
   app:
     build: .
     container_name: fastapi-server
     command: uvicorn src.main:app --host 0.0.0.0 --port 80 --reload
+    labels:
+      - "traefik.enable=true"      
+      - "traefik.http.services.app.loadbalancer.server.port=80"
+      - "traefik.http.routers.app-http.entrypoints=web"
+      - "traefik.http.routers.app-http.rule=Host(`docker-fastapi.stegul.xyz`)"
+      - "traefik.docker.network=traefik-public"
+    networks:      
+      - traefik-public
     depends_on:
       - db
       - dbtest
-    ports:
-      - 80:80      
-      - 5678:5678
     environment:
       NODE_ENV: development
       DB_HOST: db
@@ -42,6 +61,11 @@ services:
       - db
     volumes:
       - .:/code
+
 volumes:
   db:
     driver: local
+
+networks:
+  traefik-public:
+    external: true
