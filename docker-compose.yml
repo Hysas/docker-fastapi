@@ -1,19 +1,5 @@
 version: "3"
 services:
-  # traefik:
-  #   image: "traefik:latest"
-  #   container_name: "traefik"
-  #   command:
-  #     #- "--log.level=DEBUG"
-  #     - "--api.insecure=true"
-  #     - "--providers.docker=true"
-  #     - "--providers.docker.exposedbydefault=false"
-  #     - "--entrypoints.web.address=:80"
-  #   ports:
-  #     - "80:80"
-  #     - "8080:8080"
-  #   volumes:
-  #     - "/var/run/docker.sock:/var/run/docker.sock:ro"
   db:
     image: postgres:latest
     restart: always
@@ -23,8 +9,6 @@ services:
       - POSTGRES_DB=fastapi
     volumes:
       - db:/var/lib/postgresql/data
-    # networks:      
-    #   - traefik-public
   dbtest:
     image: postgres:latest
     restart: always
@@ -32,18 +16,29 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=fastapi_test
-    # networks:      
-    #   - traefik-public
   app:
     build: .
     container_name: fastapi-server
     command: uvicorn src.main:app --host 0.0.0.0 --port 80 --reload
     labels:
       - "traefik.enable=true"      
-      - "traefik.http.services.app.loadbalancer.server.port=80"
-      - "traefik.http.routers.app-http.entrypoints=web"
+      - "traefik.http.services.app.loadbalancer.server.port=80" 
+
       - "traefik.http.routers.app-http.rule=Host(`docker-fastapi.stegul.xyz`)"
+      - "traefik.http.routers.app-http.entrypoints=web"
       - "traefik.docker.network=traefik-public"
+
+      - "traefik.http.routers.app-https.rule=Host(`docker-fastapi.stegul.xyz`)"
+      - "traefik.http.routers.app-https.entrypoints=websecure"
+      - "traefik.http.routers.app-https.tls.certresolver=myresolver"
+
+      - "traefik.http.routers.app-https.tls=true"
+
+      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
+    
+      # Middleware to redirect HTTP to HTTPS
+      - "traefik.http.routers.app-http.middlewares=https-redirect"
     networks:      
       - traefik-public
     depends_on:

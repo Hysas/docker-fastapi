@@ -1,19 +1,38 @@
 services:
   traefik:
-    image: "traefik:v2.9"
+    image: "traefik:latest"
+    container_name: "traefik"
     ports:
-      - "80:80"     
+      - "80:80"
+      - "443:443"      
     restart: always
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"  
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "letsencrypt:/letsencrypt"
     command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      # - "--entrypoints.https.http.tls.domains[0].main=stegul.xyz"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      
+      - "--certificatesresolvers.myresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+      - "--certificatesresolvers.myresolver.acme.email=ssstefannn@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.myresolver.acme.preferredChain=ISRG Root X1"
       - "--accesslog"
       - "--log"      
     networks:
-      - traefik-public      
+      - traefik-public 
+
+volumes:
+  # Create a volume to store the certificates, there is a constraint to make sure
+  # Traefik is always deployed to the same Docker node with the same volume containing
+  # the HTTPS certificates
+  letsencrypt:
     
 networks:
   traefik-public:
