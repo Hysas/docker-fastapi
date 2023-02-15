@@ -6,6 +6,34 @@ services:
       - "80:80"
       - "443:443"      
     restart: always
+    labels:
+      # Enable Traefik for this service, to make it available in the public network
+      - "traefik.enable=true"
+      # Define the port inside of the Docker service to use
+      - "traefik.http.services.traefik-dashboard.loadbalancer.server.port=8080"
+      # Make Traefik use this domain in HTTP  
+      - "traefik.http.routers.traefik-dashboard-http.rule=Host(`traefik.docker-fastapi.stegul.xyz`)"
+      - "traefik.http.routers.traefik-dashboard-http.entrypoints=web"
+      # Use the traefik-public network (declared below)
+      - "traefik.docker.network=traefik-public"
+      # traefik-https the actual router using HTTPS
+      - "traefik.http.routers.traefik-dashboard-https.rule=Host(`traefik.docker-fastapi.stegul.xyz`)"
+      - "traefik.http.routers.traefik-dashboard-https.entrypoints=websecure"
+      - "traefik.http.routers.traefik-dashboard-https.tls=true"
+      # Use the "myresolver" (Let's Encrypt) resolver created below
+      - "traefik.http.routers.traefik-dashboard-https.tls.certresolver=myresolver"
+      # Use the special Traefik service api@internal with the web UI/Dashboard
+      - "traefik.http.routers.traefik-dashboard-https.service=api@internal"
+      # https-redirect middleware to redirect HTTP to HTTPS
+      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
+      # traefik-http set up only to use the middleware to redirect to https
+      - "traefik.http.routers.traefik-dashboard-http.middlewares=https-redirect"
+      # admin-auth middleware with HTTP Basic auth
+      # Using the environment variables USERNAME and HASHED_PASSWORD
+      - "traefik.http.middlewares.admin-auth.basicauth.users=${USERNAME?Variable not set}:${HASHED_PASSWORD?Variable not set}"
+      # Enable HTTP Basic auth, using the middleware created above
+      - "traefik.http.routers.traefik-dashboard-https.middlewares=admin-auth"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "letsencrypt:/letsencrypt"
@@ -15,16 +43,17 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      # - "--entrypoints.https.http.tls.domains[0].main=stegul.xyz"
+      - "--entrypoints.websecure.address=:443"      
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      
       - "--certificatesresolvers.myresolver.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.myresolver.acme.email=ssstefannn@gmail.com"
-      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-      - "--certificatesresolvers.myresolver.acme.preferredChain=ISRG Root X1"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"      
+      # Enable the access log, with HTTP requests
       - "--accesslog"
-      - "--log"      
+      # Enable the Traefik log, for configurations and errors
+      - "--log"     
+      # Enable the Dashboard and API
+      - "--api"
     networks:
       - traefik-public 
 

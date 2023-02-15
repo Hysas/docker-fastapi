@@ -13,5 +13,3 @@ services:
 networks:
   traefik-public:
     external: false
-  db-internal:
-    external: false

@@ -9,6 +9,8 @@ services:
       - POSTGRES_DB=fastapi
     volumes:
       - db:/var/lib/postgresql/data
+    networks:
+      - db-internal
   dbtest:
     image: postgres:latest
     restart: always
@@ -16,31 +18,36 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=fastapi_test
+    networks:
+      - db-internal
   app:
     build: .
     container_name: fastapi-server
     command: uvicorn src.main:app --host 0.0.0.0 --port 80 --reload
     labels:
-      - "traefik.enable=true"      
+      # Enable Traefik for this service, to make it available in the public network
+      - "traefik.enable=true"
+      # Define the port inside of the Docker service to use
       - "traefik.http.services.app.loadbalancer.server.port=80" 
-
+      # Make Traefik use this domain in HTTP
       - "traefik.http.routers.app-http.rule=Host(`docker-fastapi.stegul.xyz`)"
       - "traefik.http.routers.app-http.entrypoints=web"
+      # Use the traefik-public network (declared below)
       - "traefik.docker.network=traefik-public"
-
+      # traefik-https the actual router using HTTPS
       - "traefik.http.routers.app-https.rule=Host(`docker-fastapi.stegul.xyz`)"
       - "traefik.http.routers.app-https.entrypoints=websecure"
-      - "traefik.http.routers.app-https.tls.certresolver=myresolver"
-
       - "traefik.http.routers.app-https.tls=true"
-
+      # Use the "myresolver" (Let's Encrypt) resolver created below
+      - "traefik.http.routers.app-https.tls.certresolver=myresolver"
+      # Use the special Traefik service api@internal with the web UI/Dashboard
       - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
-    
+      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"    
       # Middleware to redirect HTTP to HTTPS
       - "traefik.http.routers.app-http.middlewares=https-redirect"
     networks:      
       - traefik-public
+      - db-internal
     depends_on:
       - db
       - dbtest
@@ -64,3 +71,4 @@ volumes:
 networks:
   traefik-public:
     external: true
+  db-internal:
