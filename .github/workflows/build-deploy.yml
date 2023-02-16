@@ -50,7 +50,7 @@ jobs:
   #         cache-to: type=gha,mode=max
   deploy:
     runs-on: self-hosted
-    needs: build
+    # needs: build
     steps:
       - 
         name: Checkout code
