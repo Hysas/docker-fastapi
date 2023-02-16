@@ -50,13 +50,7 @@ jobs:
   #         cache-to: type=gha,mode=max
   deploy:
     runs-on: self-hosted
-    # needs: build
-    permissions:
-      actions: write
-      checks: write
-      contents: write
-      pull-requests: write
-      repository-projects: write
+    # needs: build    
     steps:
       - 
         name: Checkout code2
