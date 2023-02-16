@@ -53,7 +53,7 @@ jobs:
     # needs: build
     steps:
       - 
-        name: Checkout code
+        name: Checkout code2
         uses: actions/checkout@v3
       - 
         name: generate env
