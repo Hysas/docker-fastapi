@@ -11,7 +11,7 @@ jobs:
           export USERNAME=admin
           export PASSWORD=S8D7oPqPZizJ8HX
           export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
-      - name: Start services
+      - name: Start services docker
         run: |
           sudo docker-compose -f docker-compose.traefik.yml up  --build -d
           sudo docker-compose -f docker-compose.yml up --build -d          
