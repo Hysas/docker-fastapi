@@ -6,6 +6,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Whoami
+        run: whoami
       - name: generate env
         run: |
           export USERNAME=admin
