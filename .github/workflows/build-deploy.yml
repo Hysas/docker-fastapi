@@ -6,6 +6,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: generate end
+        run: |
+          export USERNAME=admin
+          export PASSWORD=S8D7oPqPZizJ8HX
+          export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
+      - name: Start services
+        run: |
+          docker-compose -f up docker-compose.yml --build -d
+          docker-compose -f up docker-compose.traefik.yml --build -d
   #   runs-on: ubuntu-latest
   #   steps:
   #     - name: Checkout code
