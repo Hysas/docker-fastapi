@@ -60,12 +60,7 @@ jobs:
         run: |
           export USERNAME=admin
           export PASSWORD=S8D7oPqPZizJ8HX
-          export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
-      -
-        name: copy content
-        run: |
-          cp . ~/code/docker-fastapi/ -r
-          cd ~/code/docker-fastapi/
+          export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)      
       - 
         name: Start services docker 2
         run: |
