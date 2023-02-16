@@ -51,6 +51,12 @@ jobs:
   deploy:
     runs-on: self-hosted
     # needs: build
+    permissions:
+      actions: write
+      checks: write
+      contents: write
+      pull-requests: write
+      repository-projects: write
     steps:
       - 
         name: Checkout code2
