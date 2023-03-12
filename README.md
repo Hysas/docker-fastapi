@@ -107,6 +107,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![FastAPI][FastAPI-badge]][FastAPI-url]
 * [![Docker][Docker-badge]][Docker-url]
 * [![Traefik proxy][Traefik-badge]][Traefik-url]
+* [![Postgres][Postgres-badge]][Postgres-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -219,6 +220,7 @@ Project Link: [https://github.com/Hysas/docker-fastapi](https://github.com/Hysas
 * [Comprehensive Course for Beginners](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=65718s)
 * [Deploying FastAPI Apps Over HTTPS with Traefik Proxy](https://www.youtube.com/watch?v=7N5O62FjGDc&t=3248s)
 * [How to create a great dev environment with Docker](https://www.youtube.com/watch?v=0H2miBK_gAk)
+* [shields-with-icon  ](https://github.com/progfay/shields-with-icon)
 <!-- 
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
@@ -257,3 +259,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [Docker-url]: https://www.docker.com
 [Traefik-badge]: https://img.shields.io/static/v1?style=for-the-badge&message=Traefik+Proxy&color=24A1C1&logo=Traefik+Proxy&logoColor=FFFFFF&label=
 [Traefik-url]: https://traefik.io
+[Postgres-badge]: https://img.shields.io/static/v1?style=for-the-badge&message=PostgreSQL&color=4169E1&logo=PostgreSQL&logoColor=FFFFFF&label=
+[Postgres-url]: https://www.postgresql.org
