@@ -24,7 +24,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-[![Actions][actions-badge]][actions-url]
+[![GitHub Actions][actions-badge]][actions-url]
 
 
 
@@ -220,7 +220,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/Hysas/docker-fastapi/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/stefan-meiforth-gulbrandsen-0715168/
-[actions-badge]: https://github.com/Hysas/docker-fastapi/actions/workflows/build-deploy.yml/badge.svg
+[actions-badge]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FHysas%2Fdocker-fastapi%2Fbadge%3Fref%3Dmaster&style=for-the-badge
 [actions-url]: https://github.com/Hysas/docker-fastapi/actions/workflows/build-deploy.yml
 [product-screenshot]: .github/images/screenshot.png
 [FastAPI-badge]: https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white
