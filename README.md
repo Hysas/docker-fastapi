@@ -157,7 +157,7 @@ _For more examples, please refer to the [Documentation](https://docker-fastapi.s
 
 - [ ] Finish README
   - [ ] About
-    - [ ] Built With
+    - [x] Built With
   - [ ] Getting Started
     - [ ] Prerequisites
     - [x] Installation
