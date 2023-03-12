@@ -1,4 +1,4 @@
-name: Build and Deploy code
+name: Test and Build code
 on: [workflow_dispatch]
 jobs:  
   test:
