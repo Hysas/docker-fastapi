@@ -88,9 +88,9 @@
 [![Product Name Screen Shot][product-screenshot]](https://docker-fastapi.stegul.xyz/docs)
 
 This project was created to both learn and maintain a knowledge of different technologies.
-I wanted to learn to creaet REST API's and at the same time use Docker to simplify the development and deployment of the end product.
+I wanted to learn to create REST API's and at the same time use Docker to simplify the development and deployment of the end product.
 
-So the project is setup wo that with only one command you can build the entire solution and make sure you only have to focus on developing the solution.
+The project is setup so that with only one command you can build the entire solution and only have to focus on the development work.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
