@@ -252,5 +252,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [product-screenshot]: .github/images/screenshot.png
 [FastAPI-badge]: https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white
 [FastAPI-url]: https://fastapi.tiangolo.com
-[Docker-badge]: https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white
+[Docker-badge]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
 [Docker-url]: https://www.docker.com
