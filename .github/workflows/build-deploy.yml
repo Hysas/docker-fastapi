@@ -2,6 +2,12 @@ name: Build and Deploy code
 on: [workflow_dispatch]
 jobs:  
   test:
+    env:
+      DB_USER: ${{ secrets.DB_USER }}
+      POSTGRES_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
     runs-on: ubuntu-latest
     steps:
       - 
