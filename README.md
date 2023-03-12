@@ -106,6 +106,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 * [![FastAPI][FastAPI-badge]][FastAPI-url]
 * [![Docker][Docker-badge]][Docker-url]
+* [![Traefik proxy][Traefik-badge]][Traefik-url]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -254,3 +255,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [FastAPI-url]: https://fastapi.tiangolo.com
 [Docker-badge]: https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white
 [Docker-url]: https://www.docker.com
+[Traefik-badge]: https://img.shields.io/static/v1?style=for-the-badge&message=Traefik+Proxy&color=24A1C1&logo=Traefik+Proxy&logoColor=FFFFFF&label=
+[Traefik-url]: https://traefik.io
