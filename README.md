@@ -121,10 +121,7 @@ The entire project is built to run through a Docker container
 
 ### Prerequisites
 
-* Docker
-  ```sh
-  https://docs.docker.com/engine/install/
-  ```
+* [Docker](https://docs.docker.com/engine/install/)
 
 ### Installation
 
@@ -220,7 +217,7 @@ Project Link: [https://github.com/Hysas/docker-fastapi](https://github.com/Hysas
 * [Comprehensive Course for Beginners](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=65718s)
 * [Deploying FastAPI Apps Over HTTPS with Traefik Proxy](https://www.youtube.com/watch?v=7N5O62FjGDc&t=3248s)
 * [How to create a great dev environment with Docker](https://www.youtube.com/watch?v=0H2miBK_gAk)
-* [shields-with-icon  ](https://github.com/progfay/shields-with-icon)
+* [shields-with-icon](https://github.com/progfay/shields-with-icon)
 <!-- 
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
