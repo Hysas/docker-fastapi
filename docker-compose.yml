@@ -64,6 +64,7 @@ services:
       # DB_USER: postgres
       # DB_PASSWORD: postgres
       - DB_NAME=fastapi
+      - SECRET_KEY
       # SECRET_KEY: c0f1cd4babc2eecd335c47a0c137f9fa61986710aa4ad70e8dab6f4945af2ac2
     links:
       - db
