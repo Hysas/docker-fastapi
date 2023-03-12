@@ -4,8 +4,6 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      # - POSTGRES_USER=postgres
-      # - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB=fastapi
@@ -16,9 +14,7 @@ services:
   dbtest:
     image: postgres:latest
     restart: always
-    environment:
-      # - POSTGRES_USER=postgres
-      # - POSTGRES_PASSWORD=postgres
+    environment:      
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB=fastapi_test
@@ -61,11 +57,8 @@ services:
       - DB_PORT=5432
       - DB_USER
       - DB_PASSWORD
-      # DB_USER: postgres
-      # DB_PASSWORD: postgres
       - DB_NAME=fastapi
       - SECRET_KEY
-      # SECRET_KEY: c0f1cd4babc2eecd335c47a0c137f9fa61986710aa4ad70e8dab6f4945af2ac2
     links:
       - db
     volumes:
