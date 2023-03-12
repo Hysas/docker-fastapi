@@ -34,10 +34,10 @@
     <img src=".github/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Best-README-Template</h3>
+  <h3 align="center">docker-fastapi</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A learning project for developing and deploying a fastapi service with docker and automating everything from test to deployment
     <br />
     <a href="https://github.com/Hysas/docker-fastapi"><strong>Explore the docs »</strong></a>
     <br />
@@ -83,7 +83,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://docker-fastapi.stegul.xyz/docs)
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
@@ -156,12 +156,12 @@ _For more examples, please refer to the [Documentation](https://docker-fastapi.s
     - [ ] Built With
   - [ ] Getting Started
     - [ ] Prerequisites
-    - [ ] Installation
+    - [x] Installation
   - [ ] Usage
-  - [ ] Roadmap
-  - [ ] Contributing
+  - [x] Roadmap
+  - [x] Contributing
   - [x] License
-  - [ ] Contact
+  - [x] Contact
   - [ ] Acknowledgments
 - [ ] Add deployment through github actions to workflow
 
@@ -201,9 +201,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Stefan Meiforth Gulbrandsen - [Linkedin](https://www.linkedin.com/in/stefan-meiforth-gulbrandsen-0715168) - ssstefannn@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/Hysas/docker-fastapi](https://github.com/Hysas/docker-fastapi)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -211,6 +211,12 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
+
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
+* [Comprehensive Course for Beginners](https://www.youtube.com/watch?v=0sOvCWFmrtA&t=65718s)
+* [Deploying FastAPI Apps Over HTTPS with Traefik Proxy](https://www.youtube.com/watch?v=7N5O62FjGDc&t=3248s)
+* [How to create a great dev environment with Docker](https://www.youtube.com/watch?v=0H2miBK_gAk)
+<!-- 
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
@@ -221,7 +227,7 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Img Shields](https://shields.io)
 * [GitHub Pages](https://pages.github.com)
 * [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [React Icons](https://react-icons.github.io/react-icons/search) -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -241,6 +247,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/Hysas/docker-fastapi/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/stefan-meiforth-gulbrandsen-0715168/
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: .github/images/screenshot.png
 [FastAPI.py]: https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white
 [FastAPI-url]: https://fastapi.tiangolo.com
