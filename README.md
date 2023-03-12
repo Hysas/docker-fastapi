@@ -27,6 +27,8 @@
 
 
 
+
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -217,6 +219,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/Hysas/docker-fastapi/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/stefan-meiforth-gulbrandsen-0715168/
+[action-badge]: https://github.com/Hysas/docker-fastapi/actions/workflows/build-deploy.yml/badge.svg
 [product-screenshot]: .github/images/screenshot.png
 [FastAPI-badge]: https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white
 [FastAPI-url]: https://fastapi.tiangolo.com
