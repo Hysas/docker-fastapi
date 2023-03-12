@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Hysas/docker-fastapi">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src=".github/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Best-README-Template</h3>
@@ -151,6 +151,18 @@ _For more examples, please refer to the [Documentation](https://docker-fastapi.s
 <!-- ROADMAP -->
 ## Roadmap
 
+- [ ] Finish README
+  - [ ] About
+    - [ ] Built With
+  - [ ] Getting Started
+    - [ ] Prerequisites
+    - [ ] Installation
+  - [ ] Usage
+  - [ ] Roadmap
+  - [ ] Contributing
+  - [x] License
+  - [ ] Contact
+  - [ ] Acknowledgments
 - [ ] Add deployment through github actions to workflow
 
 See the [open issues](https://github.com/Hysas/docker-fastapi/issues) for a full list of proposed features (and known issues).
