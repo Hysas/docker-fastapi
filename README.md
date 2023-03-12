@@ -123,7 +123,7 @@ The entire project is built to run through a Docker container
 
 * Docker
   ```sh
-  npm install npm@latest -g
+  https://docs.docker.com/engine/install/
   ```
 
 ### Installation
