@@ -243,7 +243,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-shield]: https://img.shields.io/github/license/Hysas/docker-fastapi.svg?style=for-the-badge
 [license-url]: https://github.com/Hysas/docker-fastapi/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
+[linkedin-url]: https://www.linkedin.com/in/stefan-meiforth-gulbrandsen-0715168/
 [product-screenshot]: images/screenshot.png
 [FastAPI.py]: https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white
 [FastAPI-url]: https://fastapi.tiangolo.com
