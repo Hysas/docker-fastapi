@@ -23,8 +23,8 @@
 
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
 [![GitHub Actions][actions-badge]][actions-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
