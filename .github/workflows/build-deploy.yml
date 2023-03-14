@@ -93,5 +93,8 @@ jobs:
             export DB_PASSWORD=${{env.DB_PASSWORD}}
             export POSTGRES_PASSWORD=${{env.POSTGRES_PASSWORD}}
             export SECRET_KEY=${{env.SECRET_KEY}}
+            export USERNAME=admin
+            export PASSWORD=admin
+            export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
             docker-compose -f docker-compose.yml up --build -d
             docker-compose -f docker-compose.traefik.yml up --build -d
