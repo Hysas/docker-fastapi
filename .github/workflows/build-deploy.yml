@@ -55,6 +55,12 @@ jobs:
   #         cache-from: type=gha
   #         cache-to: type=gha,mode=max
   deploy:
+    env:
+      DB_USER: ${{ secrets.DB_USER }}
+      POSTGRES_USER: ${{ secrets.DB_USER }}
+      DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      POSTGRES_PASSWORD: ${{ secrets.DB_PASSWORD }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
     runs-on: ubuntu-latest
     # needs: build
     steps:
@@ -82,5 +88,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}          
           script: |
             cd /home/stegul/code/docker-fastapi
+            export DB_USER=${{env.DB_USER}}
+            export POSTGRES_USER=${{env.POSTGRES_USER}}
+            export DB_PASSWORD=${{env.DB_PASSWORD}}
+            export POSTGRES_PASSWORD=${{env.POSTGRES_PASSWORD}}
+            export SECRET_KEY=${{env.SECRET_KEY}}
             docker-compose -f docker-compose.yml up --build -d
-            docker-compose -f docker-compose.traefik.yml up  --build -d
+            docker-compose -f docker-compose.traefik.yml up --build -d
