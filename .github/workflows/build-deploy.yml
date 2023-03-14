@@ -75,8 +75,7 @@ jobs:
       - 
         name: Tag image 
         run:
-          docker tag sample/my-page \
-          registry.digitalocean.com/stegul/docker-fastapi
+          docker tag sample/my-page registry.digitalocean.com/stegul/docker-fastapi
       - 
         name: Push image to DO Container Registry 
         run: docker push registry.digitalocean.com/stegul/docker-fastapi
