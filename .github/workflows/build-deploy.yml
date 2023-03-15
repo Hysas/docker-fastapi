@@ -75,7 +75,7 @@ jobs:
         run: rsync -avz . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/code/docker-fastapi/
       - 
         name: Rebuild Docker Containers
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v0.1.8
         env:
           USERNAME: "admin"
           PASSWORD: "admin"
