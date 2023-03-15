@@ -18,6 +18,9 @@ jobs:
           envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}          
           file_name: settings.env
           fail_on_empty: true   
+      -
+        name: Show env
+        run: printenv
       - 
         name: Start services
         run: |
