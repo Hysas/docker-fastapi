@@ -1,4 +1,21 @@
 services:
+  hub-agent:
+    image: ghcr.io/traefik/hub-agent-traefik:v1.0.0
+    pull_policy: always
+    container_name: hub-agent
+    restart: "on-failure"
+    command:
+      - run
+      - --hub.token=${HUB_TOKEN}
+      - --auth-server.advertise-url=http://hub-agent
+      - --traefik.host=traefik
+      - --traefik.tls.insecure=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+    - traefik-public
+    depends_on:
+      - traefik
   traefik:
     image: "traefik:latest"
     container_name: "traefik"
@@ -38,6 +55,9 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "letsencrypt:/letsencrypt"
     command:
+      - "--experimental.hub=true"
+      - "--hub.tls.insecure=true"
+      - "--metrics.prometheus.addrouterslabels=true"
       - "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--providers.docker=true"

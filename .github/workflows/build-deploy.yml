@@ -94,5 +94,6 @@ jobs:
           script: |
             cd /home/stegul/code/docker-fastapi                 
             export BASIC_AUTH_USER_PASSWORD=$(htpasswd -nb ${{ secrets.TRAEFIK_USERNAME }} ${{ secrets.TRAEFIK_PASSWORD }})
+            export HUB_TOKEN=${{ secrets.TRAEFIK_HUB_TOKEN }}
             docker-compose -f docker-compose.yml up --build -d
             docker-compose -f docker-compose.traefik.yml up --build -d
