@@ -83,11 +83,11 @@ jobs:
           script: |
             cd /home/stegul/code/docker-fastapi
             touch settings.env
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
-            echo DB_USER=${{ secrets.DB_USER }} >> .env            
-            echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env            
-            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> .env            
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> settings.env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> settings.env
+            echo DB_USER=${{ secrets.DB_USER }} >> settings.env            
+            echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> settings.env            
+            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> settings.env            
             export USERNAME=admin
             export PASSWORD=admin
             export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
