@@ -21,7 +21,7 @@ jobs:
       - 
         name: Start services
         run: |
-          docker-compose up -d
+          docker-compose up --build -d
           docker-compose ps 
       - 
         name: Run pytest
