@@ -70,6 +70,16 @@ jobs:
       - 
         name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      -
+        name: Create .env file
+        run: |
+          touch settings.env
+          echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> settings.env
+          echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> settings.env
+          echo DB_USER=${{ secrets.DB_USER }} >> settings.env            
+          echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> settings.env            
+          echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> settings.env     
+          cat settings.env       
       - 
         name: Deploy with rsync
         run: rsync -avz . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/code/docker-fastapi/
@@ -81,14 +91,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}          
           script: |
-            cd /home/stegul/code/docker-fastapi
-            rm settings.env
-            touch settings.env
-            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> settings.env
-            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> settings.env
-            echo DB_USER=${{ secrets.DB_USER }} >> settings.env            
-            echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> settings.env            
-            echo SECRET_KEY=${{ secrets.SECRET_KEY }} >> settings.env            
+            cd /home/stegul/code/docker-fastapi                 
             export USERNAME=admin
             export PASSWORD=admin
             export HASHED_PASSWORD=$(openssl passwd -apr1 $PASSWORD)
