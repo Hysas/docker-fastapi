@@ -81,6 +81,9 @@ jobs:
           envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}          
           file_name: settings.env
           fail_on_empty: true
+      # -
+      #   name: Check app .env file
+      #   run: cat settings.env         
       - 
         name: Create traefik .env file
         uses: SpicyPizza/create-envfile@v1.3.0
@@ -88,9 +91,9 @@ jobs:
           envkey_BASIC_AUTH_USER_PASSWORD: admin:${{ secrets.BASIC_AUTH_USER_PASSWORD }}                
           file_name: traefik-users.env
           fail_on_empty: true
-      -
-        name: Check .env file
-        run: cat settings.env          
+      # -
+      #   name: Check traefik .env file
+      #   run: cat traefik-users.env      
       - 
         name: Deploy with rsync
         run: rsync -avz . ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/home/${{ secrets.SSH_USER }}/code/docker-fastapi/
