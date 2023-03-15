@@ -83,6 +83,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
+          envs: USERNAME,PASSWORD
           script: |
             cd /home/stegul/code/docker-fastapi
             rm settings.env
