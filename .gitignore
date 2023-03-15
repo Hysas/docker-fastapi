@@ -175,3 +175,4 @@ poetry.toml
 tmp
 .pytest_cache
 .vscode
+settings.env

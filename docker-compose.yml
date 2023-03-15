@@ -4,9 +4,9 @@ services:
     image: postgres:latest
     restart: always
     environment:
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
       - POSTGRES_DB=fastapi
+    env_file:
+      - settings.env
     volumes:
       - db:/var/lib/postgresql/data
     networks:
@@ -14,10 +14,10 @@ services:
   dbtest:
     image: postgres:latest
     restart: always
-    environment:      
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+    environment:
       - POSTGRES_DB=fastapi_test
+    env_file:
+      - settings.env
     networks:
       - db-internal
   app:
@@ -54,11 +54,10 @@ services:
     environment:
       - NODE_ENV=development
       - DB_HOST=db
-      - DB_PORT=5432
-      - DB_USER
-      - DB_PASSWORD
+      - DB_PORT=5432      
       - DB_NAME=fastapi
-      - SECRET_KEY
+    env_file:
+      - settings.env
     links:
       - db
     volumes:
