@@ -6,6 +6,8 @@ services:
       - "80:80"
       - "443:443"      
     restart: always
+    env_file:
+      - traefik-users.env
     labels:
       # Enable Traefik for this service, to make it available in the public network
       - "traefik.enable=true"
@@ -31,7 +33,7 @@ services:
       - "traefik.http.routers.traefik-dashboard-http.middlewares=https-redirect"
       # admin-auth middleware with HTTP Basic auth
       # Using the environment variables USERNAME and HASHED_PASSWORD
-      - "traefik.http.middlewares.admin-auth.basicauth.users=$${USERNAME?Variable not set}:$${HASHED_PASSWORD?Variable not set}"
+      - "traefik.http.middlewares.admin-auth.basicauth.users=${BASIC_AUTH_USER_PASSWORD}"
       # Enable HTTP Basic auth, using the middleware created above
       - "traefik.http.routers.traefik-dashboard-https.middlewares=admin-auth"
     volumes:
