@@ -5,9 +5,7 @@ services:
     ports:
       - "80:80"
       - "443:443"      
-    restart: always
-    env_file:
-      - traefik-users.env
+    restart: always    
     labels:
       # Enable Traefik for this service, to make it available in the public network
       - "traefik.enable=true"
